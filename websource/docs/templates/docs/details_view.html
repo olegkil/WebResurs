@@ -1,0 +1,45 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>{{ article.title }}</h1>
+        <p>{{ article.date }}</p>
+
+        {% if article.upload_file %}
+        <p>Просмотреть оригинал документа можно тут:  <a href=" {{article.upload_file.url}}" target="_blank">&rarr;&nbsp;<i class="far fa-file-pdf"></i>&nbsp;</a> {# <img class="img-article-right" src="{% 'main/img/ico-pdf.png' %}">#}</p>
+        {# <img src="{% static 'main/img/ico-pdf.png' %}" alt="PDF"> #}
+        {% else %}
+        <p>Файл оригинального документа не подгружен...</p>
+        {% endif %}
+
+    <div class="details">
+        <div class="text-details" <p>{{ article.full_text|linebreaks }}</p>>
+        </div>
+    </div>
+    </div>
+        <div class="moderator_button">
+            <div class="hide_button">
+                <a href="" class="btn btn-success">Ознакомлен</a>
+            </div>
+
+
+                {% if perms.docs.delete_articles %}
+                <a href="{% url 'docs-edit' article.id %}" class="btn btn-info">Редактировать запись</a>
+                <a href="{% url 'docs-delete' article.id %}" class="btn btn-danger">Удалить запись</a>
+                {% endif %}
+            <br><br><br>
+        </div>
+
+        {% load static %}
+        {% block script %}
+        <script type="text/javascript" src="{% static 'main/js/main.js' %}" defer></script>
+        {% endblock %}
+
+        <div id="timer"></div>
+        <div id="example" style=" display: none; ">
+        <a href="" class="btn btn-success">Ознакомлен</a>
+        </div>
+
+{% endblock %}

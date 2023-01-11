@@ -1,0 +1,13 @@
+{% extends 'registration/base.html' %}
+
+{% block main %}
+
+<div class="card text-center">
+    <div class="card-body">
+    <br>
+    <p>Вы вышли из учетной записи!</p><br>
+    <a  href="{% url 'login' %}" class="btn btn-primary btn-block">Войти снова</a>
+    </div>
+</div>
+
+{% endblock %}

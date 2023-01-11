@@ -1,0 +1,13 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>{{ title }}</h1>
+        <p>Информация для ознакомления, которая будет размещаться на этой странице в виде статей и располагаться в хронологическом порядке, сверху новые документы:</p>
+        <a href="{% url 'docs_home' %}"><button class="btn btn-warning">Переход на страницу "Документы"</button></a>
+
+    </div>
+
+{% endblock %}

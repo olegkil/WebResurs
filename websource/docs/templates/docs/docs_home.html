@@ -1,0 +1,24 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Документация на ресурсе{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Документация на ресурсе:</h1>
+        {% if docs %}
+            {% for el in docs %}
+                <div class="alert alert-success">
+                    <h3>{{ el.title }}</h3>
+                    <p>{{ el.anons }}</p>
+                    <p>Дата размещения статьи: {{ el.date}}</p>
+                    <a href="{% url 'docs-detail' el.id %}" class="btn btn-info">Подробнее</a>
+
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Записи отсутствуют!</p>
+        {% endif %}
+        {# <a href="{% url 'home' %}"><button class="btn btn-warning">Переход на страницу "Главная"</button></a> #}
+    </div>
+
+{% endblock %}

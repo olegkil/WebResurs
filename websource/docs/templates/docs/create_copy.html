@@ -1,0 +1,22 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Форма по добавлению записи{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Форма по добавлению записи</h1>
+        <p>Данная форма создана для добавления записей на страницу "Документы"</p>
+        <form action="{% url 'create' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.title }}<br>
+            {{ form.anons }}<br>
+            {{ form.full_text }}<br>
+            {{ form.date }}<br>
+            {{ form.upload_file }}<br>
+            {{ form.is_published }}<br>
+            <span>{{ error }}</span>
+            <button class="btn btn-success" type="submit">Добавить запись</button>
+        </form>
+    </div>
+
+{% endblock %}
